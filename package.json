@@ -1,0 +1,15 @@
+{
+  "name": "bakibot",
+  "version": "1.2.0",
+  "description": "Discord Bot by Thomas G.",
+  "main": "Baki-Bot.js",
+  "dependencies": {
+    "discord.js": "^12.4.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Thomas G.",
+  "license": "ISC"
+}
