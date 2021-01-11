@@ -14,7 +14,14 @@ function getinvite(message, args) {
         let data = '';
         https.get(`https://steamcommunity.com/id/${args[0]}/`, function(res) {
             res.on('data', function(chunk) {
-               console.log(''+chunk);
+               data += chunk;
+
+            });
+            res.on('end', function() {
+                //example string: steam://joinlobby/586140/109775241039434322/76561198427566281
+                let link_start = data.indexOf('steam://joinlobby/');
+                let link_end = link_start+61;
+                message.channel.send(`${args[0]}s Lobby: ${data.substring(link_start, link_end)}`);
 
             });
 
