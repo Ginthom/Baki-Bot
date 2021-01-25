@@ -2,7 +2,6 @@ const Discord = require('discord.js');
 const config = require('./config.json');
 const fs = require('fs');
 const { args } = require('./commands/gotobrazil');
-const { createHmac } = require('crypto');
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
@@ -26,6 +25,7 @@ client.login(config.token);
 //when the bot finished loading
 client.once('ready', () => {
     console.log('->Baki-Bot loaded');
+    client.user.setActivity("with B1TC0R3s life", {type: "PLAYING"});
 });
 
 //when a user sends a message
