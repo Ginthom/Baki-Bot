@@ -1,4 +1,5 @@
-const Discord = require('discord.js');
+
+const Discord = require(`discord.js`);
 const config = require('./config.json');
 const fs = require('fs');
 const { args } = require('./commands/gotobrazil');
@@ -72,6 +73,12 @@ client.on('message', message => {
 });
 
 function dc_log(msg, username, id) {
+    console.log(`->Called: 
+  Command  : ${msg} 
+  Username : ${username} 
+  ID       : ${id} 
+  Timestamp: ${Date.now()}`);
+
     //send embeded message to log channel
     client.channels.cache.get(config.log_channel).send(new Discord.MessageEmbed().setColor('#0bb898').addFields(
         {name: 'Command', value: msg},
