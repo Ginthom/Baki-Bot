@@ -39,23 +39,6 @@ client.on('message', message => {
     let args = message.content.slice(config.prefix.length).split(' ');
     let command_name = args.shift().toLowerCase();
 
-    //execute command via imported module
-    try {
-        const cmd = client.commands.get(command_name);
-        if(cmd.args && !args.length) {
-            message.reply(`You'll have to give me some parameters, silly C:`);
-            return;
-
-        }
-
-        cmd.execute(message, args);
-
-    }catch(error) {
-        console.error(error);
-        message.channel.send(`"${command_name}" isn't something i can do :C`);
-
-    }
-
     //help command
     if(command_name === 'help') {
         help_msg = new Discord.MessageEmbed();
@@ -64,6 +47,24 @@ client.on('message', message => {
 
         }
         message.channel.send(help_msg);
+
+    } else {
+        //execute command via imported module
+        try {
+            const cmd = client.commands.get(command_name);
+            if(cmd.args && !args.length) {
+                message.reply(`You'll have to give me some parameters, silly C:`);
+                return;
+
+            }
+
+            cmd.execute(message, args);
+
+        } catch(error) {
+            console.error(error);
+            message.channel.send(`"${command_name}" isn't something i can do :C`);
+
+        }
 
     }
 
